@@ -12,10 +12,10 @@
 
 float tiempo, distancia;
 
-String ssid = "Jose";
-String password = "zjos1271";
-String url = "http://192.168.43.136/PruebaArduino/hola.php?";
-int pausa = 800;
+String ssid = "Estudiantes";//nombre de la red wifi
+String password = "educar_2018";//la contraseña de la red
+String url = "http://10.0.15.249/PruebaArduino/hola.php";//la direccion del servidor a donde enviara los datos
+int pausa = 1000;
 WiFiServer server(80);
 
 //IPAddress ip_local(192,168,43,253);
@@ -109,7 +109,7 @@ WiFiClient client = server.available(); //objeto de la clase WiFiClient
 
   HTTPClient http;
   String postData = "dis="+String(distancia);
-  http.begin(client,url + postData);
+  http.begin(client,url);
   http.addHeader("Content-Type","application/x-www-form-urlencoded");
   int httpCode = http.POST(postData);
   String respuesta = http.getString();
@@ -121,7 +121,7 @@ WiFiClient client = server.available(); //objeto de la clase WiFiClient
   http.end();
   
 
-  delay(5000);
+  delay(1000);
   Serial.println("Peticion finalizada");
   Serial.println("");
 
